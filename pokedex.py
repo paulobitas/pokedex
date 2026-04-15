@@ -106,18 +106,34 @@ def __list_of_games():
                      "Generation V: Black & White", 
                      "Generation VI: X & Y", 
                      "Generation VII: Sun & Moon"]
+
     
     side_games = ["Pokemon Stadium", 
                   "Pokemon Snap", 
                   "Pokemon Mystery Dungeon", 
                   "Pokemon Ranger", 
                   "Pokemon Go"] 
-    
+
+    # Draw Bulbasaur Pokemon
+    bulbasaur()
+
+    print(f"\nList of all games in the series:\n")
+
+    print(f"\nMain games of each generation:\n")
+
     for i in main_games:
         print(i)
 
-    
+    print(f"\nSide games of the Pokemon universe:\n")
 
+    for i in side_games:
+        print(i)
+
+    input("Press enter to continue...\n")
+
+    pass
+    
+# List of all pokemon throughout all generations with their respective attributes
 def __list_of_generations(pokedex):
 
     generation = []
@@ -150,7 +166,6 @@ def __list_of_generations(pokedex):
     pass
 
 # List all pokemon throughout all generations with their respective attributes
-
 def __pokemon_list(pokedex):
 
     #Draw Charmeleon Pokemon
@@ -180,13 +195,14 @@ def __pokemon_list(pokedex):
 
     print(pokemon_list)
 
-    input("Press enter to continue...")
+    input("Press enter to continue...\n")
 
     pass
 
-# Search for a specific pokemon by its pokedex number and return its attributes
+# Search for a specific pokemon by its original pokedex number and return its attributes
 def __search_pokemon(pokedex):
 
+    # search for a specific pokemon by its original pokedex number
     def __search_by_number(pokedex):
         
         while True:
@@ -228,13 +244,13 @@ def __search_pokemon(pokedex):
                                 "sp_defense"
                                 ]].reset_index(drop = True)
         
-        input("Press enter to continue...")
+        input("Press enter to continue...\n")
         
         print(pokemon)
 
     pass   
     
-
+    # Search for a specific pokemon by its name and return its attributes
     def __search_by_name(pokedex):
 
         while True:
@@ -278,7 +294,7 @@ def __search_pokemon(pokedex):
         
         print(pokemon)
 
-        input("Press enter to continue...")
+        input("Press enter to continue...\n")
 
         pass
 
@@ -324,6 +340,7 @@ def __search_pokemon(pokedex):
         case 0:
             return
 
+# Search for all pokemon from a specific generation, in this case, "Generation 1"
 def __search_pokemon_by_generation(pokedex):
 
     def search(generation):        
@@ -347,16 +364,22 @@ def __search_pokemon_by_generation(pokedex):
 
             ]].reset_index(drop=True)   
         
+        # Draw Ivysaur Pokemon
+        ivysaur()
+
         print(pokemon_list)
 
         print(f"Total number of Pokemon in Generation {generation}: " + str(pokemon_list["pokedex_number"].count()))
 
-        input("Press enter to continue...")
+        input("Press enter to continue...\n")
 
         pass
 
     while True:
         try:
+            
+            # Draw Caterpie Pokemon
+            caterpie() 
 
             __list_of_generations(pokedex)
 
@@ -389,7 +412,8 @@ def __menu():
     2 - Search Pokemon (by pokedex number or name)
     3 - List all pokemon of a specific type
     4 - Search all pokemon from a specific generation
-    5 - List all pokemon types
+    5 - List all games in the series
+    6 - List of all pokemon throughout all generations with their respective attributes
     0 - Exit
 
     """
@@ -423,12 +447,18 @@ def __menu():
                 
                 #4 - Search all pokemon from a specific generation
                 case 4: 
+                    __search_pokemon_by_generation(pokedex)
+
                     continue
                 
-                # 5 - List all pokemon types
+                # 5 - List of all games in the series
                 case 5: 
-                    continue
+                    __list_of_games()
                 
+                # 6 - List of all pokemon throughout all generations with their respective attributes
+                case 6:
+                    __list_of_generations(pokedex)
+
                 # 0 - Exit
                 case 0: 
                     break
