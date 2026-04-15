@@ -1,6 +1,7 @@
 ### To do list:
-# - Create a menu with system options
-# - List all pokemon of specific type (list types, then, ask desired type and show results)
+# 1 - Correct option 3 with wrong type name
+# 2 - Correct option 6 name
+# 3 - Create a main page where user can't see the code
 
 
 import locale
@@ -163,6 +164,8 @@ def __list_of_generations(pokedex):
 
     print("Total number of Pokemon: " + str(pokedex["pokedex_number"].count())) 
 
+    input("Press enter to continue...\n")
+
     pass
 
 # List all pokemon throughout all generations with their respective attributes
@@ -244,9 +247,9 @@ def __search_pokemon(pokedex):
                                 "sp_defense"
                                 ]].reset_index(drop = True)
         
-        input("Press enter to continue...\n")
-        
         print(pokemon)
+
+        input("\nPress enter to continue...\n")
 
     pass   
     
@@ -400,7 +403,7 @@ def __search_pokemon_by_generation(pokedex):
 
 
 # Create a menu with system options
-def __menu():
+def __menu(pokedex):
 
     option = -1
 
@@ -429,13 +432,17 @@ def __menu():
             options = [1,2,3,4,5,6,0]
 
             if option not in options:
+
+                print(f"Invalid option!")
+                print("\nPlease, insert a valid option.\n")
+
                 continue
 
             match option:
 
                 # 1 - List all pokemon throughout all generations
                 case 1: 
-                    print(__pokemon_list(pokedex))
+                    __pokemon_list(pokedex)
                 
                 # 2 - Search Pokemon (by pokedex number or name)
                 case 2: 
@@ -448,8 +455,6 @@ def __menu():
                 #4 - Search all pokemon from a specific generation
                 case 4: 
                     __search_pokemon_by_generation(pokedex)
-
-                    continue
                 
                 # 5 - List of all games in the series
                 case 5: 
@@ -461,11 +466,16 @@ def __menu():
 
                 # 0 - Exit
                 case 0: 
+
+                    # Draw Ash (Satoshi) trainer
+                    ash()
+
                     break
             
 
         except ValueError:
             print(f"Invalid option!")
+            print("\nPlease, insert a valid option.\n")
 
             continue
 
@@ -474,16 +484,22 @@ def __menu():
 
 
 ### Sessão de testes
+
+def main_page():
+
+    __initialyze()
+
+    pokedex = seek_pokemon_file()
+
+    return pokedex
  
-pokedex = seek_pokemon_file()
 
-__initialyze()
 
-#__menu()
+#__menu(pokedex)
 
 
 # List all pokemons
-print("Teste - Cheguei")
+#print("Teste - Cheguei")
 
 
 #__pokemon_list(pokedex) # List all pokemon throughout all generations with their respective attributes
@@ -494,9 +510,9 @@ print("Teste - Cheguei")
 #__search_pokemon_by_generation(pokedex) # Search for all pokemon from a specific generation, in this case, "Generation 1"
 #__type_list(pokedex) # List all types of pokemon
 #__search_pokemon(pokedex) # Search for a specific pokemon by its pokedex number and return its attributes
-__menu() # Create a menu with system options
+#__menu(pokedex) # Create a menu with system options
 
-print("Teste - Terminei")
+#print("Teste - Terminei")
 
 
 
