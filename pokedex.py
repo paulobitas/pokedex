@@ -4,7 +4,7 @@ import pandas as pd
 import platform
 import sys
 
-from pokemondraw import bulbasaur, caterpie, dragonite, charizard, __pokemon_draw, charmeleon, wartortle, venosaur, squirtle, blastoise, ivysaur, charmander, ash, caterpie
+from pokemondrawning import bulbasaur, caterpie, dragonite, charizard, __pokemon_draw, charmeleon, wartortle, venosaur, squirtle, blastoise, ivysaur, charmander, ash, caterpie
 from pathlib import Path
 
 if platform.system() == "Windows":
